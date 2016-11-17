@@ -9,34 +9,34 @@ using namespace std;
 int main()
 {
 	//init
-	VideoCapture cam1(1);				//redtreive image from (non-default) camera
+	VideoCapture cam1(1);				//retreive image from (non-default) camera
 	if(!cam0.isOpened()) return 1;			//error if camera fails to load
 
+	//variables
+	int erosion_size=3;			//erosion element size (square)
+	int dilation_size=3;			//dilation element size (square
+	Mat frame0;				//original image
+	Mat frame1;				//median blur
+	Mat frame2;				//HSV image
+	Mat frame3;				//eroded image
+	Mat erosion_element = getStructuringElement(MORPH_RECT,Size(2*erosion_size+1,2*erosion_size+1),Point(erosion_size,erosion_size));
+	Mat dilation_element = getStructuringElement(MORPH_RECT,Size(2*dilation_size+1,2*dilation_size+1),Point(dilation_size,dilation_size));
+	Mat red;         			//red pen threshold
+	Mat yellow;	     			//yellow pen threshold
+	Mat blue;   	  			//blue pen threshold
+	Mat eroder;				//eroded red
+	Mat erodey;				//eroded yellow
+	Mat erodeb;				//eroded blue
+	Mat dilater;				//dilated red
+	Mat dilatey;				//dilated yellow
+	Mat dilateb;				//dilated blue
+	vector<vector<Point> > bcontours;	//blue contours
+	vector<vector<Point> > ycontours;	//yellow contours
+	vector<vector<Point> > rcontours;	//red contours
+	vector<Vec4i> heirarchy;
+	
 	while(1)
 	{
-		//variables
-		int erosion_size=3;			//erosion element size (square)
-		int dilation_size=3;			//dilation element size (square
-		Mat frame0;				//original image
-		Mat frame1;				//median blur
-		Mat frame2;				//HSV image
-		Mat frame3;				//eroded image
-		Mat erosion_element = getStructuringElement(MORPH_RECT,Size(2*erosion_size+1,2*erosion_size+1),Point(erosion_size,erosion_size));
-		Mat dilation_element = getStructuringElement(MORPH_RECT,Size(2*dilation_size+1,2*dilation_size+1),Point(dilation_size,dilation_size));
-		Mat red;         			//red pen threshold
-		Mat yellow;	     			//yellow pen threshold
-		Mat blue;   	  			//blue pen threshold
-		Mat eroder;				//eroded red
-		Mat erodey;				//eroded yellow
-		Mat erodeb;				//eroded blue
-		Mat dilater;				//dilated red
-		Mat dilatey;				//dilated yellow
-		Mat dilateb;				//dilated blue
-		vector<vector<Point> > bcontours;	//blue contours
-		vector<vector<Point> > ycontours;	//yellow contours
-		vector<vector<Point> > rcontours;	//red contours
-		vector<Vec4i> heirarchy;
-
 	      	//mapping
 	      	cam1 >> frame0;
 
