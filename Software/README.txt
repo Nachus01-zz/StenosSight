@@ -1,1 +1,2 @@
-The code is being developed using openCV 2.4.13
+OpenCV 2.4.13 is required to compile the code.
+Code is complete, but is still undergoing structural revision.
