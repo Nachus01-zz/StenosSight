@@ -24,7 +24,6 @@ int main()
     	Mat frame0;                     	        //original image
     	Mat frame1;                             	//median blur
     	Mat frame2;                             	//HSV image
-    	Mat frame3;                             	//eroded image
     	Mat erosion_elementR = getStructuringElement(MORPH_RECT,Size(2*erosion_sizeR+1,2*erosion_sizeR+1),Point(erosion_sizeR,erosion_sizeR));
     	Mat erosion_elementY = getStructuringElement(MORPH_RECT,Size(2*erosion_sizeY+1,2*erosion_sizeY+1),Point(erosion_sizeY,erosion_sizeY));
     	Mat erosion_elementB = getStructuringElement(MORPH_RECT,Size(2*erosion_sizeB+1,2*erosion_sizeB+1),Point(erosion_sizeB,erosion_sizeB));
