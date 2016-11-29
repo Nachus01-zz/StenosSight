@@ -88,6 +88,7 @@ int main()
 		dilate(erodey,dilatey,dilation_elementY);
 		dilate(erodeb,dilateb,dilation_elementB);
 
+		//clone images to be able to display simultaneously with and without contours.
 		cloner=dilater.clone();
 		cloney=dilatey.clone();
 		cloneb=dilateb.clone();
